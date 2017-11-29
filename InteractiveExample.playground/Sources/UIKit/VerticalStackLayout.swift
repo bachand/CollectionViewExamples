@@ -1,6 +1,6 @@
 import UIKit
 
-public final class Layout: UICollectionViewLayout {
+public final class VerticalStackLayout: UICollectionViewLayout {
 
   // MARK: Public
 

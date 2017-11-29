@@ -31,16 +31,6 @@ public final class PlaygroundViewController: UIViewController,
     let rootView = UIView()
     configureRootView(rootView)
 
-    let collectionViewLayout: UICollectionViewLayout
-    switch layoutType {
-    case .selfSizingFlow:
-      collectionViewLayout = UICollectionViewFlowLayout()
-    case .verticalStack:
-      collectionViewLayout = Layout()
-    }
-
-    configureCollectionViewLayout(collectionViewLayout)
-
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
     configureCollectionView(collectionView)
 
@@ -54,13 +44,33 @@ public final class PlaygroundViewController: UIViewController,
 
   private let components: [Component]
   private let layoutType: LayoutType
+  private lazy var collectionViewLayout: UICollectionViewLayout = {
+    switch layoutType {
+    case .selfSizingFlow:
+      let flowLayout = UICollectionViewFlowLayout()
+      self.configureCollectionViewLayout(flowLayout)
+      return flowLayout
+    case .verticalStack:
+      let verticalStackLayout = VerticalStackLayout()
+      self.configureCollectionViewLayout(verticalStackLayout)
+      return verticalStackLayout
+    }
+  }()
 
   private func configureRootView(_ rootView: UIView) {
     rootView.backgroundColor = #colorLiteral(red: 0.462745098, green: 0.462745098, blue: 0.462745098, alpha: 1)
   }
 
-  private func configureCollectionViewLayout(_ collectionViewLayout: UICollectionViewLayout) {
-    // nothing?
+  private func configureCollectionViewLayout(
+    _ collectionViewFlowLayout: UICollectionViewFlowLayout)
+  {
+    // TODO
+  }
+
+  private func configureCollectionViewLayout(
+    _ verticalStackLayout: VerticalStackLayout)
+  {
+    // TODO
   }
 
   private func configureCollectionView(_ collectionView: UICollectionView) {
