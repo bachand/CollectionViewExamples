@@ -1,13 +1,10 @@
 import Foundation
 import UIKit
+import ViewFramework
 
 private let cellReuseIdentifier = "cell"
 
-// MARK: - PlaygroundViewController
-
-public final class PlaygroundViewController: UIViewController,
-  UICollectionViewDataSource
-{
+public final class ViewController: UIViewController, UICollectionViewDataSource {
   // MARK: Lifecycle
 
   public init(components: [Component], layoutType: LayoutType) {
